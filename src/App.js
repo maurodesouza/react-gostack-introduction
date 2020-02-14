@@ -1,9 +1,11 @@
 import React from 'react'
 import './App.css'
 
+import image from './assets/image.png'
+
 const App = () => {
   return (
-    <h1> Hmmm ... Hello ? </h1>
+    <img width="200" src={image}></img>
   )
 }
 
