@@ -11,6 +11,20 @@ class ListTech extends Component {
     ],
   }
 
+  componentDidMount() {
+    const techs = localStorage.getItem('techs')
+
+    if (techs) {
+      this.setState({ techs: JSON.parse(techs) })
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.techs !== this.state.techs) {
+      localStorage.setItem('techs', JSON.stringify(this.state.techs))
+    }
+  }
+
   handleInputChange = ({ target: { value } }) => {
     this.setState({ newTech: value })
   }
