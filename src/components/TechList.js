@@ -38,24 +38,31 @@ class ListTech extends Component {
     });
   }
 
-  handleDelete = (tech) => {
-    this.setState({ techs: this.state.techs.filter(t => t !== tech) })
+  handleDelete = (index) => {
+    this.setState({ techs: this.state.techs.filter((t, i) => i !== index) })
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.techs.map(tech => (
+          {this.state.techs.map((tech, index) => (
             <TechItem 
-              key={tech}
+              key={index}
               tech={tech}
-              onDelete={() => this.handleDelete(tech)}
+              onDelete={() => this.handleDelete(index)}
             />
           ))}
         </ul>
-        <input type="text" onChange={this.handleInputChange} value={this.state.newTech}/>
-        <button type="submit"> Enviar </button>
+        <div>
+          <input
+            type="text"
+            onChange={this.handleInputChange}
+            value={this.state.newTech}
+            placeholder="Adicionar tecnologia"
+          />
+          <button type="submit"> Enviar </button>
+        </div>
       </form>
     )
   }
